@@ -1,6 +1,6 @@
 version: '3'
 services:
-  
+
   backend:
     build: "./bin/backend"
     user: "node"
@@ -9,7 +9,10 @@ services:
       - ./backend:/home/node/app
     ports:
       - "9000:3000"
+    links:
+      - database
     command: "npm start"
+
 
   database:
     image: "mysql:5.6"
